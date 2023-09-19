@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>GineApp</display-name>
+
+    <welcome-file-list>
+        <!-- <welcome-file>index.jsp</welcome-file> -->
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>MenuItems</servlet-name>
+        <servlet-class>com.disderm.view.MenuItems</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MenuItems</servlet-name>
+        <url-pattern>/servlet/view/MenuItems</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RecuperarClaveApp</servlet-name>
+        <jsp-file>/ext/recover_user_app_password.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecuperarClaveApp</servlet-name>
+        <url-pattern>/recuperar-clave</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AltaUsuarioApp</servlet-name>
+        <jsp-file>/ext/alta_usuario_gineapp.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AltaUsuarioApp</servlet-name>
+        <url-pattern>/alta-usuario</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ResetPasswordApp</servlet-name>
+        <jsp-file>/ext/reset_password.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ResetPasswordApp</servlet-name>
+        <url-pattern>/nueva-clave-app</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>GetFotoEquipo</servlet-name>
+        <servlet-class>com.disderm.servlets.SendEquipoImageServlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetFotoEquipo</servlet-name>
+        <url-pattern>/getFotoEquipo</url-pattern>
+    </servlet-mapping>
+
+    <security-constraint>
+        <display-name>excluded</display-name>
+        <web-resource-collection>
+            <web-resource-name>No Access</web-resource-name>
+            <url-pattern>/box/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>No Access</web-resource-name>
+            <url-pattern>/box/*</url-pattern>
+            <http-method>DELETE</http-method>
+            <http-method>PUT</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+
+        <web-resource-collection>
+            <web-resource-name>No Access</web-resource-name>
+            <url-pattern>/ext/*</url-pattern>
+        </web-resource-collection>
+        <web-resource-collection>
+            <web-resource-name>No Access</web-resource-name>
+            <url-pattern>/ext/*</url-pattern>
+            <http-method>DELETE</http-method>
+            <http-method>PUT</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+        </web-resource-collection>
+
+
+        <auth-constraint/>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+</web-app>
